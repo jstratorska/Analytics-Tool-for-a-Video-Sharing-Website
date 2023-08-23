@@ -1,0 +1,64 @@
+.dashboard {
+    border-radius: 10px;
+    box-shadow: 5px 5px 20px grey;
+    width: 100%;
+    min-height: 400px;
+    margin: 100px auto 0 auto;
+    background: white;
+    font-weight: 600;
+    padding-bottom: 50px;
+}
+
+.username-text {
+    font-size: 30px;
+    padding: 20px;
+    text-align: center;
+}
+
+.content {
+    font-size: 24px;
+    padding-left: 50px;
+}
+
+.subcontent-title {
+    font-weight: 600;
+    padding-bottom: 40px;
+    display: inline-block;
+}
+
+.subcontent {
+    font-size: 20px;
+    padding-left: 70px;
+}
+
+h1 {
+    font-weight: 900 !important;
+    font-size: 3rem;
+}
+
+a,
+a:visited {
+    color: rgb(95, 4, 35);
+    text-decoration: none;
+    border: 1px solid rgb(95, 4, 35);
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.25em;
+
+}
+
+a:active,
+a:hover {
+    background-color: rgb(95, 4, 35);
+    color: white;
+}
+
+.offset-row {
+    margin-top: 10%;
+}
+
+.number {
+   text-align: right;
+   float: right;
+}

@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="title">
+        Tracking
+    </div>
+    <form action="#" method="get">
+        <div class="row">
+            <div class="selector col-md-3">Playlist
+                <select class="custom-select" (change)="playlistSelectionChanged($event)">
+                    <option value="" hidden>Select a Playlist</option>
+                    <option *ngFor="let playlist of playlists" [value]="playlist.id">{{playlist.title}}
+                    </option>
+                </select>
+            </div>
+
+            <div class="selector col-md-4">Video
+                <select class="custom-select" (change)="videoSelectionUpdated($event)">
+                    <option value="" hidden>Select a Video</option>
+                    <option *ngFor="let video of videos" [value]="video.id">{{video.title}}</option>
+                </select>
+            </div>
+
+            <div class="selector col-md-3">Statistic
+                <select class="custom-select" (change)="statisticSelectionUpdated($event)">
+                    <option value="" hidden>Select a Statistic</option>
+                    <option *ngFor="let statistic of statistics" [value]="statistic">
+                        {{statistic | titlecase}}</option>
+                </select>
+            </div>
+
+            <div class="col-md-1">
+                <br />
+                <button class="btn btn-primary" type="button" (click)="addTracking()">Add</button>
+            </div>
+
+        </div>
+        <br />
+        <br />
+        <br />
+
+        <h3>List of trackings</h3>
+        <div class="row">
+            <table class="table">
+                <thead class="thead-dark">
+                    <th>Video Name</th>
+                    <th>Statistic</th>
+                    <th>Stop tracking</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let tracking of alreadyTracking; index as i">
+                        <td>{{tracking.videoName}}</td>
+                        <td>{{tracking.statistic | titlecase}}</td>
+                        <td><button class="btn btn-primary btn-delete" type="button" (click)="deleteTracking(i)">Stop
+                                tracking</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>

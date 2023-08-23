@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="dashboard">
+        <div class="username-text">
+            <h1>Welcome <span *ngIf="username != ''">{{username}}</span>!</h1>
+        </div>
+
+        <div *ngIf="username == ''" class="content">
+            Please log in or register with the links below in order to be able to
+            log into your YouTube account and see your YouTube statistics!
+            <div class="row offset-row">
+                <a routerLink="/login" class="offset-md-1 col-md-4">Log in</a>
+                <a routerLink="/register" class="offset-md-1 col-md-4">Register</a>
+            </div>
+        </div>
+
+        <div class="content" *ngIf="username != ''">
+            <span class="subcontent-title">Total number of videos: {{numberOfVideos}}</span>
+            <br /><br />
+            <div class="row">
+                <div class="col-md-5">
+                    <span class="subcontent-title">Totals</span>
+                    <div class="subcontent">
+                        <p>Views: <span class="number">{{videoStatistics.viewCount | number}}</span> </p>
+                        <p>Likes: <span class="number">{{videoStatistics.likeCount | number}}</span></p>
+                        <p>Dislikes: <span class="number">{{videoStatistics.dislikeCount | number}}</span></p>
+                        <p>Favorites: <span class="number">{{videoStatistics.favoriteCount | number}}</span></p>
+                        <p>Comments: <span class="number">{{videoStatistics.commentCount | number}}</span></p>
+                    </div>
+                </div>
+
+                <div class="offset-md-1 col-md-5">
+                    <span class="subcontent-title">Averages</span>
+                    <div class="subcontent">
+                        <p>Views: <span class="number">{{videoStatistics.viewCount / numberOfVideos | number}}</span>
+                        </p>
+                        <p>Likes: <span class="number">{{videoStatistics.likeCount / numberOfVideos | number}}</span>
+                        </p>
+                        <p>Dislikes: <span
+                                class="number">{{videoStatistics.dislikeCount/ numberOfVideos | number}}</span></p>
+                        <p>Favorites: <span
+                                class="number">{{videoStatistics.favoriteCount/ numberOfVideos| number}}</span></p>
+                        <p>Comments: <span
+                                class="number">{{videoStatistics.commentCount/ numberOfVideos| number}}</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

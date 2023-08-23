@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="title">
+        Time Series Forecast Graph
+    </div>
+    <form action="#" method="get">
+        <div class="row">
+            <div class="selector col-md-4">Video
+                <select class="custom-select" (change)="videoSelectionUpdated($event)">
+                    <option value="" hidden>Select a Video</option>
+                    <option *ngFor="let video of trackings" [value]="video.videoId">{{video.videoName}}</option>
+                </select>
+            </div>
+
+            <div class="selector col-md-4">Statistic
+                <select class="custom-select" (change)="statisticSelectionUpdated($event)">
+                    <option value="" hidden>Select a Statistic</option>
+                    <option *ngFor="let statistic of statistics" [value]="statistic">
+                        {{statistic | titlecase}}</option>
+                </select>
+            </div>
+
+            <div class="selector col-md-4">Color
+                <select class="custom-select" (change)="colorSelectionUpdated($event)">
+                    <option value="" hidden>Select a Color</option>
+                    <option *ngFor="let color of colors" [value]="color">
+                        {{color | titlecase}}</option>
+                </select>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12"><button class="btn btn-primary btn-lg btn-block " type="button"
+                    (click)="generateGraph()">View Graph</button></div>
+        </div>
+    </form>
+    <br /><br />
+    <svg [attr.viewBox]="'0 0 ' +(canvasWidth + xOffset) + ' ' +(canvasHeight + yOffset)" class="chart"
+        *ngIf="showGraph">
+        <!-- horizontal line -->
+        <line [attr.x1]="xOffset" [attr.y1]="canvasHeight" [attr.x2]="canvasWidth + xOffset" [attr.y2]="canvasHeight"
+            style="stroke:black;stroke-width:3" />
+        <!-- vertical line  -->
+        <line [attr.x1]="xOffset" y1="0" [attr.x2]="xOffset" [attr.y2]="canvasHeight"
+            style="stroke:black;stroke-width:3" />
+
+        <g *ngFor="let point of xLabels">
+            <line [attr.x1]="point.position" [attr.x2]="point.position" [attr.y1]="canvasHeight" [attr.y2]="0"
+                stroke="#8f727b" fill="#8f727b" stroke-width="2" />
+            <text [attr.x]="point.position - 50" [attr.y]="canvasHeight + yOffset" font-family="Arial"
+                font-size="20">{{point.text}}</text>
+        </g>
+
+        <g *ngFor="let point of yLabels">
+            <line [attr.y1]="point.position" [attr.y2]="point.position" [attr.x1]="xOffset"
+                [attr.x2]="canvasWidth + xOffset" stroke="#8f727b" fill="#8f727b" stroke-width="2" />
+            <text [attr.y]="point.position" [attr.x]="0" font-family="Arial" font-size="20">{{point.text}}</text>
+        </g>
+
+        <!-- points -->
+        <g stroke="black" stroke-width="4" fill="black">
+            <circle *ngFor="let point of xPoints; index as i" [attr.cx]="xPoints[i]" [attr.cy]="yPoints[i]" r="3" />
+        </g>
+        <!-- the graph line -->
+        <polyline fill="none" [attr.stroke]="selectedColor" stroke-width="3" [attr.points]="data" />
+    </svg>
+</div>

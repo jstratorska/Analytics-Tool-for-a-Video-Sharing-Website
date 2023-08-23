@@ -1,0 +1,28 @@
+.error-page {
+    width: 50%;
+    font-size: 36px;
+    text-align: center;
+    margin: 15% auto;
+}
+
+.error-page-message {
+    font-size: 46px;
+}
+
+.error-page-link {
+    margin-top: 30px;
+    font-weight: 800;
+}
+
+.error-page-link a {
+    color: rgb(95, 4, 35);
+    text-decoration: none;
+    border: 1px solid rgb(95, 4, 35);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.error-page-link a:hover {
+    background-color: rgb(95, 4, 35);
+    color: white;
+}

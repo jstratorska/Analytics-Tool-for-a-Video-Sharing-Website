@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="title">
+        Chart
+    </div>
+    <form action="#" method="get">
+        <div class="row" *ngFor="let selector of selectors; index as i " [id]="i">
+            <div class="selector col-md-3">Playlist
+                <select class="custom-select" (change)="playlistSelectionChanged($event)">
+                    <option value="" hidden>Select a Playlist</option>
+                    <option *ngFor="let playlist of selector.playlists" [value]="playlist.id">{{playlist.title}}
+                    </option>
+                </select>
+            </div>
+
+            <div class="selector col-md-3">Video
+                <select class="custom-select" (change)="videoSelectionUpdated($event)">
+                    <option value="" hidden>Select a Video</option>
+                    <option *ngFor="let video of selector.videos" [value]="video.id">{{video.title}}</option>
+                </select>
+            </div>
+
+            <div class="selector col-md-3">Statistic
+                <select class="custom-select" (change)="statisticSelectionUpdated($event)">
+                    <option *ngFor="let statistic of statistics" [value]="statistic"
+                        [selected]="statistic === selector.statistic">
+                        {{statistic | titlecase}}</option>
+                </select>
+            </div>
+
+            <div class="selector col-md-2">Color
+                <select class="custom-select" (change)="colorSelectionUpdated($event)">
+                    <option *ngFor="let color of colors" [value]="color" [selected]="color === selector.color">
+                        {{color | titlecase}}</option>
+                </select>
+            </div>
+
+            <div class="col-md-1">
+                <br />
+                <button class="btn btn-primary btn-delete" type="button"
+                    (click)="deleteSelector($event)">Delete</button>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-6"><button class="btn btn-primary btn-lg btn-block " type="button"
+                    (click)="generateChart()">Generate Chart</button></div>
+            <div class="col-md-6"><button type="button" (click)="addSelector()"
+                    class="btn btn-primary btn-lg btn-block">Add a new selection</button></div>
+        </div>
+    </form>
+    <br /><br />
+
+    <svg width="600" height="600" class="chart" *ngIf="chartParameters.length">
+
+        <circle r="300" cx="300" cy="300" *ngFor="let chartParameter of chartParameters; index as i"
+            [attr.stroke]="chartParameter.color" stroke-width="100%" stroke-dasharray="1 1885"
+            [attr.stroke-dasharray]="chartParameter.dashArrayValue + ' 1885'"
+            [attr.stroke-dashoffset]="chartParameter.dashOffset" />
+
+        <text *ngFor="let chartParameter of chartParameters" [attr.x]="chartParameter.x" [attr.y]="chartParameter.y"
+            font-family="Arial" font-size="30" [attr.transform]="'rotate(90, 300, 300)'">
+            {{chartParameter.percentage |percent}}
+
+        </text>
+
+    </svg>
+</div>

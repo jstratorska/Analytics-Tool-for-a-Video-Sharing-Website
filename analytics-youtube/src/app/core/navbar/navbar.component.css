@@ -1,0 +1,46 @@
+.nav-link.active {
+    color: #ff652f!important;
+    font-weight: 700;
+    /* background-color: rgb(146, 142, 142)!important; */
+}
+
+.nav-link {
+    font-size: 20px;
+    color: rgb(238, 232, 238)!important;
+    font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
+    margin: none;
+    padding-right: 50px!important;
+    cursor: pointer;
+}
+
+.nav-item,
+.navbar-nav,
+.navbar {
+    padding: 0;
+}
+
+.navbar
+{
+    padding: 0 40px;    
+}
+
+.nav-link::after
+.nav-link::before
+{
+    content: '';
+    color: white;
+    font-size: 28px;
+}
+
+.navbar-brand {
+    padding: 0 60px 0 20px;
+    color: #ff652f !important;
+    font-weight: 700;
+    font-family: 'Verdana';
+}
+
+.bg-dark {
+    background-color:#0b4142 !important;
+    opacity: 80%;
+}

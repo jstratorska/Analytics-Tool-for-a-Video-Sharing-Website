@@ -1,0 +1,47 @@
+.row
+{
+    padding: 20px 0;
+}
+svg {
+  margin: 0 auto;
+   transform: rotate(-90deg); 
+  background: #ddd;
+  border-radius: 50%;
+  display: block;
+}
+
+circle {
+  fill: none;
+  transition: stroke-dasharray 0.5s;
+}
+
+.btn-primary {
+  background-color:transparent;
+  color: rgb(95, 4, 35);
+  border: 1px solid rgb(95, 4, 35);
+  box-shadow: none;
+}
+
+.btn-delete {
+  background-color: rgb(95, 4, 35);
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color:white;
+  color: rgb(95, 4, 35);
+}
+
+.btn-primary:hover,
+.btn-primary:active
+.btn-primary:focus
+{
+  background-color: rgb(95, 4, 35);
+  color: white;
+  box-shadow: none;
+}
+
+.custom-select {
+  border: 1px solid rgb(95, 4, 35);
+  color: rgb(95, 4, 35);
+}
